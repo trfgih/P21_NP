@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{805d8d7c-ab69-4a05-b750-244d2a7aaabc}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile />
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.csproj.FileListAbsolute.txt" />
+    <Content Include="ConsoleApp5\ConsoleApp5\obj\Debug\ConsoleApp5.csproj.FileListAbsolute.txt" />
+    <Content Include="ConsoleApp6\ConsoleApp6\obj\Debug\ConsoleApp6.csproj.FileListAbsolute.txt" />
+    <Content Include="ConsoleApplication15\ConsoleApplication15\Валюты.txt" />
+    <Content Include="ConsoleApplication15\ConsoleApplication15\Валюты_коэффициенты.txt" />
+    <Content Include="ConsoleApplication25\ConsoleApplication25\1.txt" />
+    <Content Include="ConsoleApplication31\ConsoleApplication31\Валюты.txt" />
+    <Content Include="ConsoleApplication31\ConsoleApplication31\Валюты_коэффициенты.txt" />
+    <Content Include="ConsoleApplication36\ConsoleApplication36\ggggg.txt" />
+    <Content Include="ConsoleApplication36\ConsoleApplication36\ss.txt" />
+    <Content Include="ConsoleApplication55\ConsoleApplication55\PhoneBook.txt" />
+    <Content Include="ConsoleApplication59\ConsoleApplication59\ggggg.txt" />
+    <Content Include="ConsoleApplication59\ConsoleApplication59\ss.txt" />
+    <Content Include="ConsoleApplication65\ConsoleApplication65\шагпривет.txt" />
+    <Content Include="WindowsProject1\WindowsProject1\small.ico" />
+    <Content Include="WindowsProject1\WindowsProject1\WindowsProject1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PythonApplication1\PythonApplication1\PythonApplication1.py" />
+    <Compile Include="PythonApplication2\PythonApplication2\PythonApplication2.py" />
+    <Compile Include="PythonApplication3\PythonApplication3\PythonApplication3.py" />
+    <Compile Include="PythonApplication4\PythonApplication4\PythonApplication4.py" />
+    <Compile Include="PythonApplication5\PythonApplication5\PythonApplication5.py" />
+    <Compile Include="PythonApplication6\PythonApplication6\PythonApplication6.py" />
+    <Compile Include="PythonApplication7\PythonApplication7\PythonApplication7.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ConsoleApp4\ConsoleApp4\obj\Debug" />
+    <Folder Include="ConsoleApp5\ConsoleApp5\obj\Debug" />
+    <Folder Include="ConsoleApp6\ConsoleApp6\obj\Debug" />
+    <Folder Include="ConsoleApplication15\ConsoleApplication15" />
+    <Folder Include="ConsoleApplication25\ConsoleApplication25" />
+    <Folder Include="ConsoleApplication31\ConsoleApplication31" />
+    <Folder Include="ConsoleApplication36\ConsoleApplication36" />
+    <Folder Include="ConsoleApplication55\ConsoleApplication55" />
+    <Folder Include="ConsoleApplication59\ConsoleApplication59" />
+    <Folder Include="ConsoleApplication65\ConsoleApplication65" />
+    <Folder Include="PythonApplication1\PythonApplication1" />
+    <Folder Include="PythonApplication2\PythonApplication2" />
+    <Folder Include="PythonApplication3\PythonApplication3" />
+    <Folder Include="PythonApplication4\PythonApplication4" />
+    <Folder Include="PythonApplication5\PythonApplication5" />
+    <Folder Include="PythonApplication6\PythonApplication6" />
+    <Folder Include="PythonApplication7\PythonApplication7" />
+    <Folder Include="WindowsProject1\WindowsProject1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="PythonApplication4\PythonApplication4\env\">
+      <Id>env</Id>
+      <Description>env (Python 3.8 (32-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <Version>3.8</Version>
+      <Architecture>X86</Architecture>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>
