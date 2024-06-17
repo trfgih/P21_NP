@@ -1,4 +1,5 @@
-﻿//#define SINGLE_PROCESS
+﻿#define SINGLE_PROCESS
+//#define ALL_PROCESSES
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,9 +34,25 @@ namespace Process
 			Console.WriteLine($"SessionID: {process.SessionId}");
 			Console.WriteLine($"Threads: {process.Threads}");
 			Console.WriteLine($"Priority class: {process.PriorityClass}");
-#endif
 
-				System.Diagnostics.Process[] processes = System.Diagnostics.Process.GetProcesses();
+			PerformanceCounter counter = new PerformanceCounter("Process", "% Processor Time", process.ProcessName, true);
+			Console.WriteLine("Press any key to continue...");
+			while (!Console.KeyAvailable)
+			{
+				Console.Clear();
+				double proccent = counter.NextValue();
+				Console.WriteLine($"{process.ProcessName} CPU load:{proccent/10}%");
+				int units = 1024*1024;
+				Console.WriteLine($"Working Set {process.WorkingSet64/units}");
+				Console.WriteLine($"Private Working Set {process.PrivateMemorySize64/units}");
+				System.Threading.Thread.Sleep(100);
+			}
+			process.CloseMainWindow();
+			process.Dispose();
+			process = null;
+#endif
+#if ALL_PROCESSES
+			System.Diagnostics.Process[] processes = System.Diagnostics.Process.GetProcesses();
 				for (int i = 0; i < processes.Length; i++) 
 				{
 				Console.WriteLine($"{processes[i].Id}\t {processes[i].MainModule.FileName}");
@@ -44,6 +61,7 @@ namespace Process
 					Console.Write($"Path:{processes[i].MainModule.FileName}\t");
 					//Console.WriteLine();
 				}
+#endif
 		}
 		[DllImport("advapi32.dll", SetLastError = true)]
 		private static extern bool OpenProcessToken(IntPtr processHandle, uint desiredAcsess, out IntPtr handle);
