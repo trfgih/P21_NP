@@ -26,6 +26,7 @@ namespace TaskManager
 		{
 			AddNewProcesses();
 			RemoveOldrocesses();
+			statusStrip1.Items[0].Text = ($"количество  процессов: {listViewProcesses.Items.Count}");
 			this.d_processes = Process.GetProcesses().ToDictionary(item => item.Id, item => item);
 		}
 		void SetColumns()
@@ -52,7 +53,7 @@ namespace TaskManager
 				item.SubItems.Add(i.Value.ProcessName);
 				listViewProcesses.Items.Add(item);
 			}
-			statusStrip1.Items[0].Text = ($"количество  процессов: {listViewProcesses.Items.Count}");
+			//statusStrip1.Items[0].Text = ($"количество  процессов: {listViewProcesses.Items.Count}");
 		}
 		void AddNewProcesses() 
 		{
@@ -65,7 +66,7 @@ namespace TaskManager
 					AddProcessToListView(i.Value);
 				}
 			}
-			statusStrip1.Items[0].Text = ($"количество  процессов: {listViewProcesses.Items.Count}");
+			//statusStrip1.Items[0].Text = ($"количество  процессов: {listViewProcesses.Items.Count}");
 		}
 		void RemoveOldrocesses() 
 		{
