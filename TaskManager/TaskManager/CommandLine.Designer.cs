@@ -1,6 +1,6 @@
 ﻿namespace TaskManager
 {
-	partial class ComandLine
+	partial class CommandLine
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComandLine));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommandLine));
 			this.buttonOk = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.buttonBrowse = new System.Windows.Forms.Button();
@@ -69,11 +69,13 @@
 			// 
 			// comboBoxFileName
 			// 
+			this.comboBoxFileName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
 			this.comboBoxFileName.FormattingEnabled = true;
 			this.comboBoxFileName.Location = new System.Drawing.Point(25, 123);
 			this.comboBoxFileName.Name = "comboBoxFileName";
 			this.comboBoxFileName.Size = new System.Drawing.Size(237, 21);
 			this.comboBoxFileName.TabIndex = 3;
+			this.comboBoxFileName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxFileName_KeyPress);
 			// 
 			// pictureBox
 			// 
@@ -86,7 +88,7 @@
 			this.pictureBox.TabIndex = 4;
 			this.pictureBox.TabStop = false;
 			// 
-			// ComandLine
+			// CommandLine
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -99,8 +101,9 @@
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "ComandLine";
+			this.Name = "CommandLine";
 			this.Text = "Run";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CommandLine_FormClosing);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
 			this.ResumeLayout(false);
 

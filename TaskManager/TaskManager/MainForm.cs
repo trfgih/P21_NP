@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
+
 
 namespace TaskManager
 {
@@ -16,9 +18,12 @@ namespace TaskManager
 		readonly int rumFactor = 1024;
 		readonly string suffix = "kB";
 		Dictionary<int, Process> d_processes;
+		CommandLine cmd;
 		public MainForm()
 		{
 			InitializeComponent();
+			cmd = new CommandLine();
+
 			SetColumns();
 			statusStrip1.Items.Add("");
 			LoadProcesses();
@@ -118,8 +123,20 @@ namespace TaskManager
 
 		private void runToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			ComandLine cmd = new ComandLine();
+			//ComandLine cmd = new ComandLine();
 			cmd.ShowDialog();
+		}
+
+		private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			StreamWriter sw = new StreamWriter("ProgramList.txt");
+
+			for (int i = 0; i < cmd.ComboBoxFileName.Items.Count; i++)
+			{
+				sw.WriteLine(cmd.ComboBoxFileName.Items[i]);
+			}
+
+			sw.Close();
 		}
 	}
 }

@@ -57,14 +57,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ComandLine.cs">
+    <Compile Include="CommandLine.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ComandLine.Designer.cs">
-      <DependentUpon>ComandLine.cs</DependentUpon>
+    <Compile Include="CommandLine.Designer.cs">
+      <DependentUpon>CommandLine.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ComandLine.resx">
-      <DependentUpon>ComandLine.cs</DependentUpon>
+    <EmbeddedResource Include="CommandLine.resx">
+      <DependentUpon>CommandLine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
