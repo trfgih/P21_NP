@@ -15,6 +15,7 @@ namespace TaskManager
 {
 	public partial class MainForm : Form
 	{
+		
 		readonly int rumFactor = 1024;
 		readonly string suffix = "kB";
 		Dictionary<int, Process> d_processes;
@@ -143,6 +144,11 @@ namespace TaskManager
 		{
 			//MessageBox.Show(listViewProcesses.SelectedItems[0].Text, "Selected PID", MessageBoxButtons.OK);
 			d_processes[Convert.ToInt32(listViewProcesses.SelectedItems[0].Text)].Kill();
+		}
+
+		private void listViewProcesses_ColumnClick(object sender, ColumnClickEventArgs e)
+		{
+			listViewProcesses.ListViewItemSorter = new Comparer(e.Column);
 		}
 	}
 }

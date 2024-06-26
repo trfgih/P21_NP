@@ -86,6 +86,7 @@
 			this.listViewProcesses.TabIndex = 0;
 			this.listViewProcesses.UseCompatibleStateImageBehavior = false;
 			this.listViewProcesses.View = System.Windows.Forms.View.Details;
+			this.listViewProcesses.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewProcesses_ColumnClick);
 			// 
 			// tabPage2
 			// 
@@ -148,12 +149,12 @@
 			this.contextMenuProcess.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.processCloseToolStripMenuItem});
 			this.contextMenuProcess.Name = "contextMenuProcess";
-			this.contextMenuProcess.Size = new System.Drawing.Size(181, 48);
+			this.contextMenuProcess.Size = new System.Drawing.Size(147, 26);
 			// 
 			// processCloseToolStripMenuItem
 			// 
 			this.processCloseToolStripMenuItem.Name = "processCloseToolStripMenuItem";
-			this.processCloseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.processCloseToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.processCloseToolStripMenuItem.Text = "Process Close";
 			this.processCloseToolStripMenuItem.Click += new System.EventHandler(this.processCloseToolStripMenuItem_Click);
 			// 
