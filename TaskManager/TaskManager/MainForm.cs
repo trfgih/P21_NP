@@ -15,7 +15,7 @@ namespace TaskManager
 {
 	public partial class MainForm : Form
 	{
-		
+
 		readonly int rumFactor = 1024;
 		readonly string suffix = "kB";
 		Dictionary<int, Process> d_processes;
@@ -68,7 +68,7 @@ namespace TaskManager
 			}
 			//statusStrip1.Items[0].Text = ($"количество  процессов: {listViewProcesses.Items.Count}");
 		}
-		void AddNewProcesses() 
+		void AddNewProcesses()
 		{
 			Dictionary<int, Process> d_processes = Process.GetProcesses().ToDictionary(item => item.Id, item => item);
 			foreach (KeyValuePair<int, Process> i in d_processes)
@@ -81,24 +81,24 @@ namespace TaskManager
 			}
 			//statusStrip1.Items[0].Text = ($"количество  процессов: {listViewProcesses.Items.Count}");
 		}
-		void RemoveOldrocesses() 
+		void RemoveOldrocesses()
 		{
 
 			this.d_processes = Process.GetProcesses().ToDictionary(item => item.Id, item => item);
-			for (int i = 0; i < listViewProcesses.Items.Count; i++) 
+			for (int i = 0; i < listViewProcesses.Items.Count; i++)
 			{
 				//string item_name = listViewProcesses.Items[i].Name;
 				if (!d_processes.ContainsKey(Convert.ToInt32(listViewProcesses.Items[i].Text)))
-				{ 
+				{
 					listViewProcesses.Items.RemoveAt(i);
 				}
 			}
-		
+
 		}
 
-		void UpdatesExistingProcesses() 
+		void UpdatesExistingProcesses()
 		{
-			for(int i = 0; i < listViewProcesses.Items.Count;i++)
+			for (int i = 0; i < listViewProcesses.Items.Count; i++)
 			{
 				int id = Convert.ToInt32(listViewProcesses.Items[i].Text);
 				//Process process = d_processes[id];
@@ -109,15 +109,15 @@ namespace TaskManager
 		}
 		void AddProcessToListView(Process process)
 		{
-			
+
 			ListViewItem item = new ListViewItem();
 			item.Text = process.Id.ToString();
 			item.SubItems.Add(process.ProcessName);
-			item.SubItems.Add($"{process.WorkingSet64/rumFactor}{suffix}");
-			item.SubItems.Add($"{process.PeakWorkingSet64/rumFactor}{suffix}");
+			item.SubItems.Add($"{process.WorkingSet64 / rumFactor}{suffix}");
+			item.SubItems.Add($"{process.PeakWorkingSet64 / rumFactor}{suffix}");
 			listViewProcesses.Items.Add(item);
 		}
-		void RemoveProcessesFromListView(int pid) 
+		void RemoveProcessesFromListView(int pid)
 		{
 			listViewProcesses.Items.RemoveByKey(pid.ToString());
 		}
@@ -148,7 +148,34 @@ namespace TaskManager
 
 		private void listViewProcesses_ColumnClick(object sender, ColumnClickEventArgs e)
 		{
-			listViewProcesses.ListViewItemSorter = new Comparer(e.Column);
+			listViewProcesses.ListViewItemSorter = GetListViewSorter(e.Column);
+			listViewProcesses.Sort();
+		}
+		Comparer GetListViewSorter(int index)
+		{
+			Comparer comparer = (Comparer)listViewProcesses.ListViewItemSorter;
+			if (comparer== null) comparer = new Comparer();
+
+			comparer.Index = index;
+			string columnName = listViewProcesses.Columns[index].Text;
+			switch (columnName) 
+			{
+				case "PID":
+					comparer.Type = Comparer.ValueType.Integer;
+					break;
+				case "Name":
+					comparer.Type = Comparer.ValueType.String;
+					break;
+				case "Working set":
+				case "Peac working set":
+					comparer.Type = Comparer.ValueType.Memory;
+					break;
+
+			}
+
+
+			comparer.Direction = comparer.Direction == SortOrder.Ascending ?  SortOrder.Descending : SortOrder.Ascending ;
+			return comparer;
 		}
 	}
 }
